@@ -1,0 +1,22 @@
+ Work Breakdown structure
+Gantt chart--- to show timeline for activities
+Tello-- for tasks to do lists
+build something within the cloud  what ever we are building make sure 
+it is fault tolerant and failover capabilities and it should support containerization,
+must use a SAN, and need to secure the project
+
+
+
+1st wbs
+object stiirage and san
+if we chose object storage instead of san wbs woulb be like this and discuss the benifts
+
+San like storage ki architechuture and research papers and research papers on object storage
+nextcloud, minio, ceph and openstack cinder reasearch papers
+and limitations of block storage and object storage screenshots
+and why we are stressing more abt object storage-----> becoz implementaion, manenement, authentication, version control, cluster management and migration is easy and 
+Frontend/ ui/ux----
+Devsecops/ lead
+system admin
+baackend db admin
+qa tester

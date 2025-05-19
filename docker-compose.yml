@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: storme-frontend:latest
+    build:
+      context: ./storme-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - storme-net
+
+  backend:
+    image: storme-backend:latest
+    build:
+      context: ./storme-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./storme-backend/.env
+    volumes:
+      - storme-data:/app/storage
+    depends_on:
+      - postgres
+      - keycloak
+    networks:
+      - storme-net
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: storme_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - storme-net
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.1.4
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - storme-net
+volumes:
+  pgdata:
+  storme-data:
+
+networks:
+  storme-net:
+    driver: overlay

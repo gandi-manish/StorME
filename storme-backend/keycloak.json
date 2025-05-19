@@ -1,0 +1,10 @@
+{
+  "realm": "master",
+  "auth-server-url": "http://localhost:8080/",
+  "ssl-required": "external",
+  "resource": "storme-backend",
+  "credentials": {
+    "secret": "jGDdAVsWS1ud0RwwISA4ArlEC1WCselH"
+  },
+  "confidential-port": 0
+}
